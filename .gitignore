@@ -1,0 +1,6 @@
+**/bin/
+**/obj/
+
+/dist/*.md
+/dist/manifest.json
+!/dist/.gitkeep

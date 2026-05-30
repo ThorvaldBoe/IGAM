@@ -1,0 +1,47 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and publish release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build bundle
+        run: dotnet run --project tools/build-bundle
+
+      - name: Verify generated files
+        shell: bash
+        run: |
+          version="${GITHUB_REF_NAME}"
+          test -f "dist/igam-full-spec-${version}.md"
+          test -f "dist/latest.md"
+          test -f "dist/manifest.json"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: IGAM ${{ github.ref_name }}
+          tag_name: ${{ github.ref_name }}
+          generate_release_notes: true
+          files: |
+            dist/igam-full-spec-${{ github.ref_name }}.md
+            dist/latest.md
+            dist/manifest.json
