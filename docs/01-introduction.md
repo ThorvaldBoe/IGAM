@@ -80,3 +80,4 @@ Use IGAM when:
 - AI or automation will help analyze architecture artifacts
 
 IGAM can be applied lightly for simple integrations and more formally for high-criticality or enterprise-wide integration landscapes.
+
