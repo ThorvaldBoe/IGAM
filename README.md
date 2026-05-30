@@ -1,5 +1,7 @@
 # Integration Governance and Architecture Model (IGAM)
 
+![IGAM icon](assets/IGAM-icon.png)
+
 IGAM is a high-level model for governing integration landscapes before selecting implementation technologies, middleware, or integration patterns.
 
 Many integration failures are not caused by message routing, protocol choice, or code quality alone. They are caused by unclear ownership, conflicting sources of truth, missing change authority, undefined operational responsibility, and unmanaged evolution. IGAM helps teams make those concerns explicit before architecture and implementation decisions harden.
@@ -29,6 +31,8 @@ IGAM does not replace technical design, implementation patterns, API standards, 
 ```text
 igam/
 +-- README.md
++-- assets/
+|   +-- IGAM-icon.png
 +-- docs/
 |   +-- 01-introduction.md
 |   +-- 02-principles.md
