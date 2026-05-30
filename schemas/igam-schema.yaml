@@ -1,0 +1,284 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://igam.dev/schemas/igam-schema.yaml"
+title: "IGAM v0.1 Artifact Schema"
+description: "Starter schema for Integration Governance and Architecture Model artifacts."
+type: object
+required:
+  - igamVersion
+  - metadata
+  - systems
+  - businessEntities
+  - integrations
+properties:
+  igamVersion:
+    type: string
+    const: "0.1"
+  metadata:
+    type: object
+    required:
+      - name
+      - owner
+      - status
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+      owner:
+        type: string
+      status:
+        type: string
+        enum:
+          - draft
+          - reviewed
+          - approved
+          - deprecated
+      lastReviewed:
+        type: string
+        format: date
+    additionalProperties: true
+  systems:
+    type: array
+    minItems: 1
+    items:
+      $ref: "#/$defs/system"
+  businessEntities:
+    type: array
+    minItems: 1
+    items:
+      $ref: "#/$defs/businessEntity"
+  integrations:
+    type: array
+    minItems: 1
+    items:
+      $ref: "#/$defs/integration"
+  artifacts:
+    type: object
+    properties:
+      ownershipMatrix:
+        $ref: "#/$defs/artifactReference"
+      authorityMatrix:
+        $ref: "#/$defs/artifactReference"
+      sourceOfTruthMap:
+        $ref: "#/$defs/artifactReference"
+      integrationContracts:
+        $ref: "#/$defs/artifactReference"
+      criticalityAssessments:
+        $ref: "#/$defs/artifactReference"
+    additionalProperties: true
+additionalProperties: false
+
+$defs:
+  system:
+    type: object
+    required:
+      - id
+      - name
+      - owner
+    properties:
+      id:
+        type: string
+        pattern: "^[a-zA-Z0-9._-]+$"
+      name:
+        type: string
+      type:
+        type: string
+        examples:
+          - saas
+          - erp
+          - crm
+          - legacy
+          - data-platform
+          - custom-application
+      owner:
+        type: string
+      vendor:
+        type: string
+      notes:
+        type: string
+    additionalProperties: true
+
+  businessEntity:
+    type: object
+    required:
+      - id
+      - name
+      - owner
+      - sourceOfTruth
+    properties:
+      id:
+        type: string
+        pattern: "^[a-zA-Z0-9._-]+$"
+      name:
+        type: string
+      owner:
+        type: string
+      sourceOfTruth:
+        type: object
+        required:
+          - systemId
+        properties:
+          systemId:
+            type: string
+          scope:
+            type: string
+          conflictRule:
+            type: string
+        additionalProperties: true
+    additionalProperties: true
+
+  integration:
+    type: object
+    required:
+      - id
+      - name
+      - purpose
+      - owner
+      - sourceSystemId
+      - targetSystemId
+      - criticality
+      - topology
+      - authority
+      - operations
+      - evolution
+    properties:
+      id:
+        type: string
+        pattern: "^[a-zA-Z0-9._-]+$"
+      name:
+        type: string
+      purpose:
+        type: string
+      owner:
+        type: string
+      sourceSystemId:
+        type: string
+      targetSystemId:
+        type: string
+      businessEntityIds:
+        type: array
+        items:
+          type: string
+      criticality:
+        type: string
+        enum:
+          - convenience
+          - operational
+          - mission-critical
+      topology:
+        type: string
+        enum:
+          - point-to-point
+          - hub-and-spoke
+          - event-driven
+          - file-based
+          - human-in-the-loop
+          - hybrid
+      interface:
+        $ref: "#/$defs/interface"
+      authority:
+        $ref: "#/$defs/authority"
+      operations:
+        $ref: "#/$defs/operations"
+      evolution:
+        $ref: "#/$defs/evolution"
+    additionalProperties: true
+
+  interface:
+    type: object
+    properties:
+      type:
+        type: string
+        examples:
+          - api
+          - event
+          - file
+          - database
+          - manual
+      contractReference:
+        type: string
+      schemaReference:
+        type: string
+      notes:
+        type: string
+    additionalProperties: true
+
+  authority:
+    type: object
+    required:
+      - contractChange
+    properties:
+      sourceSystemChange:
+        type: string
+      targetSystemChange:
+        type: string
+      schemaChange:
+        type: string
+      contractChange:
+        type: string
+      businessRuleChange:
+        type: string
+      vendorControlled:
+        type: boolean
+      notes:
+        type: string
+    additionalProperties: true
+
+  operations:
+    type: object
+    required:
+      - monitoringOwner
+      - supportOwner
+      - incidentOwner
+    properties:
+      monitoringOwner:
+        type: string
+      supportOwner:
+        type: string
+      incidentOwner:
+        type: string
+      alerting:
+        type: string
+      recovery:
+        type: string
+      serviceLevel:
+        type: string
+      notes:
+        type: string
+    additionalProperties: true
+
+  evolution:
+    type: object
+    required:
+      - expectedLifespan
+      - expectedRateOfChange
+      - versioningApproach
+      - deprecationStrategy
+    properties:
+      expectedLifespan:
+        type: string
+      expectedRateOfChange:
+        type: string
+      versioningApproach:
+        type: string
+      compatibilityExpectation:
+        type: string
+      deprecationStrategy:
+        type: string
+      reviewCadence:
+        type: string
+    additionalProperties: true
+
+  artifactReference:
+    type: object
+    required:
+      - maintainedIn
+      - owner
+    properties:
+      maintainedIn:
+        type: string
+      owner:
+        type: string
+      notes:
+        type: string
+    additionalProperties: true
