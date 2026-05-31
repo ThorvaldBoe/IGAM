@@ -80,6 +80,35 @@ It should include:
 
 The contract does not need to duplicate every technical schema detail, but it should identify where those details are defined and who controls them.
 
+## Data Classification Matrix
+
+The Data Classification Matrix maps business entities or payload fields to governance classifications. It helps teams understand which integrations handle sensitive, regulated, personal, or otherwise constrained data before topology, logging, storage, replication, or retention decisions are made.
+
+It should answer:
+
+- which entities or attributes are handled by the integration
+- how each entity or attribute is classified
+- which owner or policy defines the classification
+- whether special handling is required for access, logging, retention, residency, masking, or deletion
+
+Template:
+
+| Entity | Classification | Owner Or Policy | Architectural Notes |
+| --- | --- | --- | --- |
+| Product | Public | Product Operations | May be cached or published broadly. |
+| Customer | Personal Data | Data Governance Policy | Limit replication; preserve deletion and consent handling. |
+| Employee | Confidential | HR Data Policy | Restrict access and logging; review vendor transfers. |
+
+A simple version may only include entity and classification:
+
+| Entity | Classification |
+| --- | --- |
+| Product | Public |
+| Customer | Personal Data |
+| Employee | Confidential |
+
+The matrix is not a legal classification exercise by itself. It is an integration governance artifact that records the classifications teams need in order to make architecture and operational decisions.
+
 ## Criticality Assessment
 
 The Criticality Assessment defines business impact and operational requirements.
@@ -113,5 +142,6 @@ For each meaningful integration, IGAM recommends maintaining:
 - one Source-of-Truth Map entry for each relevant business entity
 - one Integration Contract
 - one Criticality Assessment
+- one Data Classification Matrix for integrations that handle classified, personal, confidential, regulated, or retention-sensitive data
 
 Small organizations can combine these into a single document. Larger organizations may maintain them in repositories, architecture tools, catalogs, or governance platforms.

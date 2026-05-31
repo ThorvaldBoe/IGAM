@@ -58,6 +58,7 @@ Future schema versions may add:
 - decision records
 - references to external schemas
 - lifecycle state
+- richer machine-readable metadata for privacy, classification, retention, residency, compliance, and auditability
 
 ## AI Advisor
 
@@ -70,6 +71,7 @@ An AI advisor could help review IGAM artifacts and identify:
 - weak operational responsibility
 - missing versioning or deprecation strategy
 - architecture decisions that do not match governance conditions
+- missing or inconsistent cross-cutting governance concern metadata
 
 Any AI advisor should preserve human accountability for final decisions.
 

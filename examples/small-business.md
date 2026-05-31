@@ -46,6 +46,25 @@ The order export is file-based because the accounting system supports scheduled 
 
 The newsletter signup sync is API-based using the marketing tool's standard connector.
 
+## Cross-Cutting Governance Concerns
+
+| Concern | Notes |
+| --- | --- |
+| Privacy | Newsletter subscriber data includes personal data such as email address and subscription status. Consent fields must be preserved and unnecessary customer attributes should not be sent to the marketing tool. |
+| Security | Accounting and marketing credentials should be scoped to the minimum required access. File exports should be protected in transit and at rest. |
+| Compliance | Applicable privacy or consumer communication obligations should be identified by the business owner and marketing lead before changing subscriber synchronization behavior. |
+| Auditability | Order export failures and newsletter consent changes should be traceable to support recovery and customer questions. |
+
+### Data Classification Matrix
+
+| Entity | Classification |
+| --- | --- |
+| Product | Public |
+| Order | Internal |
+| Customer Email Address | Personal Data |
+| Newsletter Subscriber | Personal Data |
+| Invoice | Confidential |
+
 ## Evolution
 
 The expected rate of change is low. The main risks are plugin updates, accounting import changes, and consent rule changes.

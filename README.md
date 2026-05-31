@@ -22,9 +22,10 @@ IGAM focuses on:
 - integration criticality and operational expectations
 - topology and architectural decision guidance
 - evolution, versioning, and deprecation
+- cross-cutting governance concerns such as privacy, security, compliance, classification, retention, residency, and auditability as architectural constraints
 - structured artifacts that can be read by people, AI systems, and automation tools
 
-IGAM does not replace technical design, implementation patterns, API standards, event schemas, or platform-specific architecture. It gives teams the governance context needed to choose those things responsibly.
+IGAM does not replace technical design, implementation patterns, API standards, event schemas, platform-specific architecture, legal advice, or compliance frameworks. It gives teams the governance context needed to choose those things responsibly.
 
 ## Repository Structure
 
@@ -56,8 +57,9 @@ igam/
 4. Map the source of truth for each business entity.
 5. Identify who has authority to change systems, schemas, contracts, and rules.
 6. Assess criticality and operational responsibility.
-7. Select topology and implementation patterns using the governance context.
-8. Define versioning, deprecation, and review expectations.
+7. Identify cross-cutting governance concerns such as privacy, security, compliance, data classification, retention, residency, and auditability.
+8. Select topology and implementation patterns using the governance context.
+9. Define versioning, deprecation, and review expectations.
 
 ## IGAM Custom GPT
 
