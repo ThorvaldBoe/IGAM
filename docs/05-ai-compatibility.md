@@ -61,8 +61,43 @@ The schema is intended to help teams represent:
 - topology
 - evolution
 - operational responsibility
+- privacy, classification, retention, compliance, and auditability metadata
 
 The schema is deliberately compact in v0.1. It should be extended as practical use cases emerge.
+
+For example, this excerpt from an AI-compatible artifact can expose governance constraints without making the tool responsible for legal or compliance decisions:
+
+```yaml
+igamVersion: "0.1"
+metadata:
+  name: "Customer profile synchronization"
+  owner: "Integration Platform Team"
+  status: "reviewed"
+integrations:
+  - id: customer-profile-sync
+    name: "Customer Profile Sync"
+    criticality: operational
+    topology: event-driven
+    governanceConcerns:
+      privacy:
+        personalData: true
+        specialCategoryData: false
+        minimization: "Publish only attributes required by approved consumers."
+        erasureHandling: "Deletion requests propagate through the integration contract."
+      classification:
+        highestClassification: "Personal Data"
+        matrixReference: "docs/data-classification/customer-profile.md"
+      compliance:
+        obligations: ["GDPR-like privacy obligations"]
+        notes: "Confirm applicable obligations with accountable governance and legal owners."
+      retention:
+        policy: "Do not retain payloads beyond operational retry window."
+      auditability:
+        traceability: "Correlation ID required for each published event."
+        changeHistory: "Contract and mapping changes require review record."
+```
+
+This type of metadata helps AI systems and automation tools identify missing review points, inconsistent classifications, excessive retention, or weak auditability. It does not make IGAM dependent on AI and does not replace accountable human approval.
 
 ## Good AI-Compatible IGAM Artifacts
 

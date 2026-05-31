@@ -40,9 +40,9 @@ Authority should be explicit for:
 
 ## Principle 4: Architecture Follows Governance
 
-Architecture choices should be driven by ownership, authority, criticality, and operational constraints.
+Architecture choices should be driven by ownership, authority, criticality, operational constraints, and cross-cutting governance concerns such as privacy, security, compliance, data classification, retention, residency, and auditability.
 
-For example, a convenience integration between two internally owned systems may tolerate a simple point-to-point approach. A mission-critical process involving several domains and vendors may require stronger contract governance, monitoring, versioning, and decoupling.
+For example, a convenience integration between two internally owned systems may tolerate a simple point-to-point approach. A mission-critical process involving several domains and vendors may require stronger contract governance, monitoring, versioning, and decoupling. An integration that carries personal, confidential, regulated, or retention-sensitive data may require additional architectural constraints even when the business process itself is not mission critical.
 
 IGAM does not prescribe one topology as universally correct. It asks teams to choose architecture based on the governance situation.
 
@@ -84,6 +84,6 @@ Governance and architecture artifacts should be expressible in structured format
 
 AI should be supported but not required.
 
-IGAM artifacts should be written clearly enough for humans and structured enough for automated analysis. YAML, JSON, and similar formats can support AI-assisted assessment, documentation generation, architecture review, and governance validation.
+IGAM artifacts should be written clearly enough for humans and structured enough for automated analysis. YAML, JSON, and similar formats can support AI-assisted assessment, documentation generation, architecture review, and governance validation, including validation of privacy, classification, retention, compliance, and auditability metadata.
 
 AI compatibility does not mean delegating governance decisions to AI. It means making the artifacts explicit enough that AI and automation can assist responsibly.

@@ -46,6 +46,26 @@ The employee eligibility feed is file-based because the vendor requires schedule
 
 The enrollment callback is API-based because the vendor exposes enrollment updates through a webhook and retrieval API.
 
+## Cross-Cutting Governance Concerns
+
+| Concern | Notes |
+| --- | --- |
+| Privacy | Employee data may include personal data and benefits-related attributes. The integration should minimize fields sent to the vendor and define how lifecycle events such as termination or deletion requests are handled. |
+| Security | The file feed and callback cross an internal-to-vendor trust boundary. Access control, secure transfer, integrity checks, and vendor operational responsibilities must be documented. |
+| Compliance | Employment, benefits, privacy, or financial reporting obligations may constrain timing, retention, evidence, and change approvals. IGAM captures these as architecture constraints, not as legal advice. |
+| Data Residency And Retention | Vendor storage locations and retention behavior should be known before sensitive employee data is transferred. |
+| Auditability | Eligibility file generation, vendor import results, enrollment callbacks, reconciliation reports, and mapping changes should be traceable for operational accountability. |
+
+### Data Classification Matrix
+
+| Entity | Classification |
+| --- | --- |
+| Employee | Confidential |
+| Employee Contact Details | Personal Data |
+| Benefits Eligibility | Confidential |
+| Benefit Selection | Confidential |
+| Health-Related Benefit Attribute | Special Category Data |
+
 ## Operational Responsibility
 
 | Responsibility | Owner |

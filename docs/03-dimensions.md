@@ -93,6 +93,47 @@ Key questions:
 
 Evolution planning is especially important when multiple consumers, vendors, or business-critical processes depend on the integration.
 
+## Cross-Cutting Governance Concerns
+
+IGAM keeps ownership, authority, criticality, topology, and evolution as the core dimensions. Concerns such as privacy, security, compliance, data classification, auditability, data residency, and data retention are not additional dimensions. They cut across all dimensions and should be treated as architectural constraints that shape integration decisions.
+
+These concerns help teams ask whether an integration is governable and operable under the obligations that apply to the data, systems, organizations, and jurisdictions involved. IGAM does not turn these concerns into legal advice or a compliance framework. It uses them to make governance and architecture implications visible before technology choices are finalized.
+
+### Privacy
+
+Privacy concerns arise when integrations handle personal data or special category data. Teams should consider whether the integration collects, transforms, replicates, stores, or exposes more data than necessary; how data minimization is enforced; how right-to-erasure or deletion requests propagate; and how the full data lifecycle is governed from creation through retention, archival, and disposal.
+
+Privacy can influence IGAM dimensions in several ways:
+
+- Ownership: data owners and integration owners must be clear about who is accountable for personal data moving through the integration.
+- Authority: schema, mapping, retention, and deletion behavior may require specific approval before change.
+- Topology: unnecessary replication, broad event publication, or uncontrolled caches may be inappropriate for sensitive personal data.
+- Evolution: versioning, deprecation, migration, and retirement plans must account for data lifecycle obligations and deletion propagation.
+
+### Security
+
+Security concerns include confidentiality, integrity, access control, and trust boundaries. Integrations often connect systems with different identities, networks, privilege models, and operational controls. The architecture should make explicit which systems and parties are trusted, where trust boundaries are crossed, how access is granted, and how integrity is protected across transport, transformation, storage, and replay.
+
+Security requirements may influence interface style, authentication and authorization, encryption, network placement, message validation, logging, monitoring, error handling, and segregation of duties. Higher security requirements may also constrain topology by discouraging direct point-to-point access, requiring controlled gateways, or limiting which systems may subscribe to events.
+
+### Compliance
+
+Compliance concerns include regulatory requirements, industry standards, and legal obligations that affect integration behavior. Examples may include GDPR, PCI-DSS, HIPAA, SOX, or similar frameworks, depending on organizational context. IGAM does not define compliance controls for these frameworks. Instead, it records that compliance obligations exist and asks how they constrain ownership, authority, topology, operations, and evolution.
+
+Compliance constraints may require named approval authorities, stronger change control, evidence of testing, specific retention rules, restricted data movement, audit reporting, or documented operational procedures.
+
+### Data Classification
+
+Data classification identifies the sensitivity and governance expectations of data handled by integrations. Example classifications include Public, Internal, Confidential, Personal Data, and Special Category Data. Organizations may adapt these labels to match their own policies.
+
+Classification affects architecture and governance decisions by influencing allowed consumers, integration topology, access controls, logging behavior, storage locations, masking or tokenization needs, retention periods, and review rigor. A low-criticality integration may still require strong controls if it carries highly classified data.
+
+### Auditability
+
+Auditability concerns include traceability, change history, operational accountability, and regulatory reporting. Teams should be able to understand what data moved, which version of a contract or mapping was used, who approved relevant changes, which failures occurred, and how incidents were resolved.
+
+Auditability may influence logging, correlation identifiers, immutable event or file records, approval workflows, change history, reconciliation reports, and operational dashboards. The goal is to support accountability and evidence without turning integrations into unmanaged repositories of sensitive data.
+
 ## Dimension Summary
 
 An IGAM assessment should produce a concise profile similar to this:

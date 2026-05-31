@@ -64,7 +64,7 @@ IGAM is intended for:
 - operations and support teams
 - vendors and implementation partners
 
-It can be used in small organizations with a few systems or in large enterprises with many domains, platforms, vendors, and regulatory constraints.
+It can be used in small organizations with a few systems or in large enterprises with many domains, platforms, vendors, and regulatory constraints. Privacy, security, compliance, data classification, residency, retention, and auditability are treated as cross-cutting architecture constraints rather than as separate IGAM dimensions or legal frameworks.
 
 ## When To Use IGAM
 

@@ -57,6 +57,27 @@ The enterprise uses a mixed topology:
 
 This topology reflects the different governance and operational needs of each flow.
 
+## Cross-Cutting Governance Concerns
+
+| Concern | Notes |
+| --- | --- |
+| Privacy | Customer profile and identity integrations handle personal data. Attribute publication should follow data minimization, deletion propagation, and lifecycle rules defined by accountable data owners. |
+| Security | Identity and customer integrations cross trust boundaries between customer-facing, internal, vendor, and analytics systems. Access control, confidentiality, and integrity expectations must be explicit in contracts. |
+| Compliance | Regulatory, industry, or contractual obligations may constrain customer identity, billing, support, and analytics data flows. IGAM records those constraints so architecture review can apply the right approval path. |
+| Data Residency And Retention | Data platform ingestion and event retention must respect approved storage locations and retention windows for each classification. |
+| Auditability | Mission-critical integrations require traceability across events, API calls, schema versions, mapping changes, incidents, and reconciliation reports. |
+
+### Data Classification Matrix
+
+| Entity | Classification |
+| --- | --- |
+| Product Reference Data | Public |
+| Customer Profile | Personal Data |
+| Customer Identity | Personal Data |
+| Order | Confidential |
+| Support Case | Confidential |
+| Sensitive Customer Attribute | Special Category Data |
+
 ## Evolution
 
 Recommended evolution rules:
