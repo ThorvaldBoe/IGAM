@@ -59,6 +59,16 @@ igam/
 7. Select topology and implementation patterns using the governance context.
 8. Define versioning, deprecation, and review expectations.
 
+## IGAM Custom GPT
+
+A custom GPT is available to help explore and apply IGAM:
+
+- [Open the IGAM Custom GPT](https://chatgpt.com/g/g-6a1aefdbe5bc8191b50d2a745b101548-igam)
+
+Use it as an assistant for drafting IGAM artifacts, reviewing integration scenarios, identifying missing governance information, and turning early integration notes into more structured ownership, authority, source-of-truth, criticality, topology, and evolution guidance.
+
+The custom GPT is intended to support human review, not replace accountable governance decisions. Teams should validate its suggestions against their own systems, owners, risk profile, and operating model.
+
 ## Core Documents
 
 - [Introduction](docs/01-introduction.md)
