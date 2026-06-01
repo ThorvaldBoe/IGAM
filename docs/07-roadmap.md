@@ -58,7 +58,17 @@ Future schema versions may add:
 - decision records
 - references to external schemas
 - lifecycle state
-- richer machine-readable metadata for privacy, classification, retention, residency, compliance, and auditability
+- richer machine-readable metadata for integration security governance, privacy, classification, retention, residency, compliance, and auditability
+
+## Security Governance Maturity
+
+Future IGAM versions may expand Integration Security Governance with:
+
+- reusable Security Governance Profile templates
+- message-broker-specific governance examples for RabbitMQ, Azure Service Bus, and similar platforms
+- review checklists for API-based, event-driven, queue-based, file-based, and vendor integrations
+- security anti-pattern detection rules for AI-assisted review
+- stronger schema definitions for identities, permissions, secrets, trust boundaries, replay, dead-letter handling, and incident evidence
 
 ## AI Advisor
 
@@ -72,6 +82,7 @@ An AI advisor could help review IGAM artifacts and identify:
 - missing versioning or deprecation strategy
 - architecture decisions that do not match governance conditions
 - missing or inconsistent cross-cutting governance concern metadata
+- missing trust-boundary, identity, authorization, secrets, replay, dead-letter, or incident-response governance
 
 Any AI advisor should preserve human accountability for final decisions.
 

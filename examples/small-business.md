@@ -65,6 +65,17 @@ The newsletter signup sync is API-based using the marketing tool's standard conn
 | Newsletter Subscriber | Personal Data |
 | Invoice | Confidential |
 
+### Security Governance Profile
+
+| Area | Notes |
+| --- | --- |
+| Security Owner | Business Owner coordinates security decisions with Finance Lead and Marketing Lead. |
+| Trust Boundaries | Online store to accounting file exchange; online store to email marketing API. |
+| Identities | Accounting import and marketing connector credentials are separate and owned by the relevant business lead. |
+| Authorization | Credentials are limited to the minimum actions needed for import or subscriber synchronization. |
+| Data Protection | Order exports and subscriber data are protected during transfer and excluded from unnecessary logs or email attachments. |
+| Recovery | Manual retries should not copy customer or invoice data into uncontrolled spreadsheets or tickets. |
+
 ## Evolution
 
 The expected rate of change is low. The main risks are plugin updates, accounting import changes, and consent rule changes.

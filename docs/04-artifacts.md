@@ -75,6 +75,7 @@ It should include:
 - versioning approach
 - compatibility expectations
 - error handling expectations
+- security governance expectations
 - operational responsibility
 - deprecation rules
 
@@ -108,6 +109,38 @@ A simple version may only include entity and classification:
 | Employee | Confidential |
 
 The matrix is not a legal classification exercise by itself. It is an integration governance artifact that records the classifications teams need in order to make architecture and operational decisions.
+
+
+## Security Governance Profile
+
+The Security Governance Profile defines how integration security decisions are owned, approved, implemented, operated, and reviewed. It makes security a first-class artifact for integrations that cross trust boundaries, carry sensitive data, use shared integration platforms, involve vendors, or support operationally important processes.
+
+It should answer:
+
+- who owns security governance for the integration
+- which trust boundaries are crossed
+- which identities are used by producers, consumers, processors, adapters, operators, deployment automation, and support users
+- who can publish, consume, administer, replay, inspect, or support integration traffic
+- how authentication, authorization, confidentiality, integrity, validation, and non-repudiation are handled
+- where messages, files, payloads, logs, dead-letter records, traces, and diagnostics may be stored
+- how secrets, keys, certificates, credentials, and managed identities are owned, rotated, revoked, and audited
+- how security monitoring, incident response, break-glass access, retry, replay, dead-letter handling, and recovery are governed
+- which residual risks or exceptions have been accepted, by whom, and until when
+
+Example:
+
+| Area | Value |
+| --- | --- |
+| Security Owner | Security Architecture with Integration Platform Team |
+| Trust Boundaries | CRM SaaS to integration platform; integration platform to ERP. |
+| Identities | Separate producer, consumer, processor, deployment, and support identities per environment. |
+| Authorization | CRM can publish customer updates; ERP consumer can read only its subscription; payload inspection requires approval. |
+| Data Protection | Sensitive fields are encrypted in transit and at rest and redacted from logs. |
+| Replay And Dead Letter | Replay requires integration owner approval; dead-letter payload access is restricted and audited. |
+| Secrets | Managed identities preferred; remaining secrets stored in an approved secrets manager with monitored rotation. |
+| Evidence | Access changes, failed authorization, replay actions, and validation failures are retained for audit review. |
+
+The Security Governance Profile should align with the dedicated [Integration Security Governance](06-integration-security-governance.md) chapter.
 
 ## Criticality Assessment
 
@@ -143,5 +176,6 @@ For each meaningful integration, IGAM recommends maintaining:
 - one Integration Contract
 - one Criticality Assessment
 - one Data Classification Matrix for integrations that handle classified, personal, confidential, regulated, or retention-sensitive data
+- one Security Governance Profile for integrations that cross trust boundaries, carry sensitive data, use shared integration platforms, involve vendors, or support operationally important processes
 
 Small organizations can combine these into a single document. Larger organizations may maintain them in repositories, architecture tools, catalogs, or governance platforms.

@@ -78,6 +78,18 @@ This topology reflects the different governance and operational needs of each fl
 | Support Case | Confidential |
 | Sensitive Customer Attribute | Special Category Data |
 
+### Security Governance Profile
+
+| Area | Notes |
+| --- | --- |
+| Security Owner | Security Architecture owns security review with the Integration Platform Team. |
+| Trust Boundaries | Customer-facing identity, CRM vendor, integration platform, ERP, support platform, and data platform boundaries are documented for each flow. |
+| Identities | Producers, consumers, processors, deployment automation, and support users use distinct environment-scoped identities. |
+| Authorization | Event subscriptions require data owner and integration owner approval; support users may inspect metadata by default and payloads only through an approved break-glass path. |
+| Data Protection | Personal and confidential attributes are encrypted in transit and at rest and redacted from routine logs and dashboards. |
+| Replay And Dead Letter | Replay and dead-letter inspection require approval, traceability, and consumer impact review. |
+| Evidence | Access changes, schema validation failures, replay actions, and security incidents are retained for audit review. |
+
 ## Evolution
 
 Recommended evolution rules:

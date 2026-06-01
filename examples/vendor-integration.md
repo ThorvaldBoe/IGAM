@@ -66,6 +66,19 @@ The enrollment callback is API-based because the vendor exposes enrollment updat
 | Benefit Selection | Confidential |
 | Health-Related Benefit Attribute | Special Category Data |
 
+### Security Governance Profile
+
+| Area | Notes |
+| --- | --- |
+| Security Owner | People Technology coordinates security governance with Security Architecture and the Benefits Vendor. |
+| Trust Boundaries | Internal HR system to vendor file transfer; vendor callback endpoint to internal integration platform. |
+| Identities | File-transfer, callback, integration-processing, deployment, and support identities are distinct where supported by the vendor. |
+| Authorization | Vendor access is limited to benefits eligibility and enrollment purposes; callback and file permissions are reviewed before enrollment periods. |
+| Data Protection | Employee and benefits data are protected in transit and at rest; sensitive attributes are excluded from routine logs and support tickets. |
+| Secrets And Certificates | Transfer credentials and callback certificates have named owners, expiry monitoring, rotation procedures, and emergency revocation steps. |
+| Replay And Reconciliation | Re-sending eligibility files or replaying callbacks requires People Technology approval and reconciliation with vendor import results. |
+| Incident Response | People Technology coordinates employee-impact assessment, credential rotation, vendor escalation, and downstream notification. |
+
 ## Operational Responsibility
 
 | Responsibility | Owner |

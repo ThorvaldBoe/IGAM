@@ -67,6 +67,8 @@ properties:
         $ref: "#/$defs/artifactReference"
       dataClassificationMatrix:
         $ref: "#/$defs/artifactReference"
+      securityGovernanceProfile:
+        $ref: "#/$defs/artifactReference"
     additionalProperties: true
 additionalProperties: false
 
@@ -194,6 +196,8 @@ $defs:
         $ref: "#/$defs/evolution"
       governanceConcerns:
         $ref: "#/$defs/governanceConcerns"
+      securityGovernance:
+        $ref: "#/$defs/securityGovernance"
     additionalProperties: true
 
   interface:
@@ -314,19 +318,7 @@ $defs:
             type: string
         additionalProperties: true
       security:
-        type: object
-        properties:
-          confidentiality:
-            type: string
-          integrity:
-            type: string
-          accessControl:
-            type: string
-          trustBoundaries:
-            type: array
-            items:
-              type: string
-        additionalProperties: true
+        $ref: "#/$defs/securityGovernance"
       compliance:
         type: object
         properties:
@@ -395,3 +387,161 @@ $defs:
             type: string
         additionalProperties: true
     additionalProperties: true
+
+  securityGovernance:
+    type: object
+    description: "Integration security governance profile covering trust boundaries, identity, access, data protection, secure operations, and incident accountability."
+    properties:
+      owner:
+        type: string
+      approver:
+        type: string
+      trustBoundaries:
+        type: array
+        items:
+          type: string
+      identities:
+        type: array
+        items:
+          type: object
+          properties:
+            name:
+              type: string
+            type:
+              type: string
+              examples:
+                - producer
+                - consumer
+                - processor
+                - adapter
+                - operator
+                - deployment
+                - support
+            owner:
+              type: string
+            environment:
+              type: string
+            permissions:
+              type: array
+              items:
+                type: string
+          additionalProperties: true
+      authorization:
+        type: object
+        properties:
+          publish:
+            type: string
+          consume:
+            type: string
+          administer:
+            type: string
+          replay:
+            type: string
+          inspectPayloads:
+            type: string
+          accessReviewCadence:
+            type: string
+        additionalProperties: true
+      confidentiality:
+        type: object
+        properties:
+          inTransit:
+            type: string
+          atRest:
+            type: string
+          logging:
+            type: string
+          masking:
+            type: string
+          diagnostics:
+            type: string
+        additionalProperties: true
+      integrity:
+        type: object
+        properties:
+          validation:
+            type: string
+          duplicateHandling:
+            type: string
+          replayProtection:
+            type: string
+          signaturesOrChecksums:
+            type: string
+          changeTraceability:
+            type: string
+        additionalProperties: true
+      secrets:
+        type: object
+        properties:
+          storage:
+            type: string
+          owner:
+            type: string
+          rotationCadence:
+            type: string
+          revocationProcedure:
+            type: string
+          certificateMonitoring:
+            type: string
+        additionalProperties: true
+      messageSecurity:
+        type: object
+        properties:
+          brokerBoundary:
+            type: string
+          topicOrQueuePermissions:
+            type: string
+          deadLetterAccess:
+            type: string
+          retention:
+            type: string
+          replayApproval:
+            type: string
+        additionalProperties: true
+      monitoringAndEvidence:
+        type: object
+        properties:
+          securityEvents:
+            type: array
+            items:
+              type: string
+          evidenceRetention:
+            type: string
+          logAccess:
+            type: string
+          payloadAccessAudit:
+            type: string
+        additionalProperties: true
+      incidentResponse:
+        type: object
+        properties:
+          incidentOwner:
+            type: string
+          escalationPath:
+            type: string
+          credentialCompromiseProcedure:
+            type: string
+          consumerNotification:
+            type: string
+          recoveryAndReconciliation:
+            type: string
+        additionalProperties: true
+      residualRisks:
+        type: array
+        items:
+          type: object
+          properties:
+            risk:
+              type: string
+            acceptedBy:
+              type: string
+            expires:
+              type: string
+              format: date
+            remediationPlan:
+              type: string
+          additionalProperties: true
+      reviewCadence:
+        type: string
+    additionalProperties: true
+
