@@ -17,6 +17,7 @@ It asks questions such as:
 - How critical is the integration to the business?
 - Who monitors it, supports it, and responds when it fails?
 - How is the integration expected to evolve?
+- Which trust boundaries, identities, access rights, and data protection obligations shape the integration?
 
 The output of IGAM is a set of governance and architecture artifacts that provide decision guidance.
 

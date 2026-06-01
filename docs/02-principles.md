@@ -1,6 +1,6 @@
 # Principles
 
-IGAM v0.1 is based on seven core principles.
+IGAM v0.1 is based on eight core principles.
 
 ## Principle 1: Every Integration Has An Owner
 
@@ -46,7 +46,23 @@ For example, a convenience integration between two internally owned systems may 
 
 IGAM does not prescribe one topology as universally correct. It asks teams to choose architecture based on the governance situation.
 
-## Principle 5: Evolution Is Inevitable
+
+## Principle 5: Security Governance Is A First-Class Integration Responsibility
+
+Security is part of integration governance from the beginning, not a final implementation checklist. Every meaningful integration should make trust boundaries, identities, access rights, confidentiality needs, integrity expectations, secrets ownership, secure operations, and incident accountability explicit.
+
+Security governance should answer:
+
+- which trust boundaries the integration crosses
+- which systems, people, vendors, services, processors, adapters, and automation identities participate
+- who can publish, consume, administer, replay, inspect, or support integration traffic
+- how sensitive data is protected in transit, at rest, in logs, in dead-letter stores, and during diagnostics
+- who owns credentials, keys, certificates, managed identities, and access reviews
+- how security incidents, compromised credentials, unauthorized subscriptions, poisoned messages, and replay risks are handled
+
+Security requirements should influence topology, contracts, message design, operational procedures, and lifecycle reviews. A low-criticality integration may still require strong controls if it crosses a vendor boundary or carries sensitive data.
+
+## Principle 6: Evolution Is Inevitable
 
 Integrations must be designed with change and versioning in mind.
 
@@ -61,7 +77,7 @@ Each integration should define:
 - deprecation strategy
 - review cadence
 
-## Principle 6: Operational Responsibility Must Be Defined
+## Principle 7: Operational Responsibility Must Be Defined
 
 Monitoring, support, incident handling, and maintenance responsibilities must be explicit.
 
@@ -78,7 +94,7 @@ Operational responsibility should cover:
 - maintenance windows
 - service-level expectations
 
-## Principle 7: AI Compatibility
+## Principle 8: AI Compatibility
 
 Governance and architecture artifacts should be expressible in structured formats that are understandable by humans, AI systems, and automation tools.
 

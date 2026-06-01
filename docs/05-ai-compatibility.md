@@ -61,6 +61,7 @@ The schema is intended to help teams represent:
 - topology
 - evolution
 - operational responsibility
+- integration security governance
 - privacy, classification, retention, compliance, and auditability metadata
 
 The schema is deliberately compact in v0.1. It should be extended as practical use cases emerge.
@@ -95,9 +96,23 @@ integrations:
       auditability:
         traceability: "Correlation ID required for each published event."
         changeHistory: "Contract and mapping changes require review record."
+    securityGovernance:
+      owner: "Security Architecture"
+      trustBoundaries:
+        - "CRM SaaS to integration platform"
+        - "Integration platform to ERP"
+      authorization:
+        publish: "CRM producer identity may publish customer profile events."
+        consume: "Approved ERP consumer identity may read only its subscription."
+        replay: "Replay requires integration owner approval."
+      confidentiality:
+        logging: "Sensitive profile attributes are redacted from logs."
+      secrets:
+        storage: "Approved secrets manager or managed identity."
+        rotationCadence: "At least annually and after suspected compromise."
 ```
 
-This type of metadata helps AI systems and automation tools identify missing review points, inconsistent classifications, excessive retention, or weak auditability. It does not make IGAM dependent on AI and does not replace accountable human approval.
+This type of metadata helps AI systems and automation tools identify missing review points, inconsistent classifications, excessive retention, weak security governance, or weak auditability. It does not make IGAM dependent on AI and does not replace accountable human approval.
 
 ## Good AI-Compatible IGAM Artifacts
 

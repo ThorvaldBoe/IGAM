@@ -22,7 +22,8 @@ IGAM focuses on:
 - integration criticality and operational expectations
 - topology and architectural decision guidance
 - evolution, versioning, and deprecation
-- cross-cutting governance concerns such as privacy, security, compliance, classification, retention, residency, and auditability as architectural constraints
+- cross-cutting governance concerns such as privacy, compliance, classification, retention, residency, and auditability as architectural constraints
+- integration security governance, including trust boundaries, identity, access, data protection, secure operations, and incident accountability
 - structured artifacts that can be read by people, AI systems, and automation tools
 
 IGAM does not replace technical design, implementation patterns, API standards, event schemas, platform-specific architecture, legal advice, or compliance frameworks. It gives teams the governance context needed to choose those things responsibly.
@@ -40,7 +41,8 @@ igam/
 |   +-- 03-dimensions.md
 |   +-- 04-artifacts.md
 |   +-- 05-ai-compatibility.md
-|   +-- 06-roadmap.md
+|   +-- 06-integration-security-governance.md
+|   +-- 07-roadmap.md
 +-- schemas/
 |   +-- igam-schema.yaml
 +-- examples/
@@ -57,9 +59,10 @@ igam/
 4. Map the source of truth for each business entity.
 5. Identify who has authority to change systems, schemas, contracts, and rules.
 6. Assess criticality and operational responsibility.
-7. Identify cross-cutting governance concerns such as privacy, security, compliance, data classification, retention, residency, and auditability.
-8. Select topology and implementation patterns using the governance context.
-9. Define versioning, deprecation, and review expectations.
+7. Identify cross-cutting governance concerns such as privacy, compliance, data classification, retention, residency, and auditability.
+8. Define integration security governance, including trust boundaries, identities, access, secrets, secure operations, and incident response.
+9. Select topology and implementation patterns using the governance context.
+10. Define versioning, deprecation, and review expectations.
 
 ## IGAM Custom GPT
 
@@ -78,7 +81,8 @@ The custom GPT is intended to support human review, not replace accountable gove
 - [Dimensions](docs/03-dimensions.md)
 - [Governance Artifacts](docs/04-artifacts.md)
 - [AI Compatibility](docs/05-ai-compatibility.md)
-- [Roadmap](docs/06-roadmap.md)
+- [Integration Security Governance](docs/06-integration-security-governance.md)
+- [Roadmap](docs/07-roadmap.md)
 
 ## Status
 

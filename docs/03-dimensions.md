@@ -95,7 +95,7 @@ Evolution planning is especially important when multiple consumers, vendors, or 
 
 ## Cross-Cutting Governance Concerns
 
-IGAM keeps ownership, authority, criticality, topology, and evolution as the core dimensions. Concerns such as privacy, security, compliance, data classification, auditability, data residency, and data retention are not additional dimensions. They cut across all dimensions and should be treated as architectural constraints that shape integration decisions.
+IGAM keeps ownership, authority, criticality, topology, and evolution as the core dimensions. Concerns such as privacy, compliance, data classification, auditability, data residency, and data retention are not additional dimensions. They cut across all dimensions and should be treated as architectural constraints that shape integration decisions. Security also cuts across every dimension, and IGAM gives it a dedicated governance chapter because trust boundaries, identity, authorization, data protection, secure operations, and incident response must be designed rather than appended.
 
 These concerns help teams ask whether an integration is governable and operable under the obligations that apply to the data, systems, organizations, and jurisdictions involved. IGAM does not turn these concerns into legal advice or a compliance framework. It uses them to make governance and architecture implications visible before technology choices are finalized.
 
@@ -112,9 +112,9 @@ Privacy can influence IGAM dimensions in several ways:
 
 ### Security
 
-Security concerns include confidentiality, integrity, access control, and trust boundaries. Integrations often connect systems with different identities, networks, privilege models, and operational controls. The architecture should make explicit which systems and parties are trusted, where trust boundaries are crossed, how access is granted, and how integrity is protected across transport, transformation, storage, and replay.
+Security concerns include confidentiality, integrity, access control, identity, secrets, platform boundaries, and trust boundaries. Integrations often connect systems with different identities, networks, privilege models, vendors, operational controls, and support paths. The architecture should make explicit which systems and parties are trusted, where trust boundaries are crossed, how access is granted, how sensitive data is protected, how integrity is preserved, and how secure operations such as replay, retry, dead-letter handling, credential rotation, and incident response are governed.
 
-Security requirements may influence interface style, authentication and authorization, encryption, network placement, message validation, logging, monitoring, error handling, and segregation of duties. Higher security requirements may also constrain topology by discouraging direct point-to-point access, requiring controlled gateways, or limiting which systems may subscribe to events.
+Security requirements may influence interface style, authentication and authorization, encryption, network placement, message validation, logging, monitoring, error handling, segregation of duties, and topology. Higher security requirements may discourage direct point-to-point access, require controlled gateways or private connectivity, restrict event subscribers, limit payload visibility in diagnostics, or require dedicated queues, topics, broker namespaces, tenants, or environments. See [Integration Security Governance](06-integration-security-governance.md) for the dedicated IGAM security chapter.
 
 ### Compliance
 
